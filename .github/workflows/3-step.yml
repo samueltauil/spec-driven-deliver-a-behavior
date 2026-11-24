@@ -1,0 +1,200 @@
+name: Step 3
+
+on:
+  # Manual re-run for facilitators and testing.
+  workflow_dispatch:
+  # The learner opens the pull request; edits to its description and new pushes are checked again.
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
+
+# Least privilege: no default permissions; each job asks only for what it uses.
+permissions: {}
+
+# A quick edit or push cancels the run it supersedes instead of grading twice.
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+env:
+  STEP_4_FILE: ".github/steps/4-step.md"
+
+jobs:
+  find_exercise:
+    name: Find Exercise Issue
+    permissions:
+      issues: read # locate the exercise issue
+    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.9.3
+
+  check_step_work:
+    name: Check step work
+    runs-on: ubuntu-latest
+    needs: [find_exercise]
+    permissions:
+      contents: read # read the learner's files
+      issues: write # update Mona's feedback comment
+      actions: read # read the CI workflow run for the pull request's head commit
+      # No actions: write. A learner-triggered job must not enable or disable workflows.
+    env:
+      ISSUE_REPOSITORY: ${{ github.repository }}
+      ISSUE_NUMBER: ${{ needs.find_exercise.outputs.issue-number }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Get response templates
+        uses: actions/checkout@v6
+        with:
+          repository: skills/exercise-toolkit
+          path: exercise-toolkit
+          ref: v0.9.3
+
+      - name: Find last comment
+        id: find-last-comment
+        uses: peter-evans/find-comment@v4
+        with:
+          repository: ${{ env.ISSUE_REPOSITORY }}
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          comment-author: github-actions[bot] # never target the learner's own comment
+          direction: last
+
+      - name: Update comment - checking work
+        uses: GrantBirki/comment@v2.1.1
+        with:
+          repository: ${{ env.ISSUE_REPOSITORY }}
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          comment-id: ${{ steps.find-last-comment.outputs.comment-id }}
+          file: exercise-toolkit/markdown-templates/step-feedback/checking-work.md
+          edit-mode: replace
+
+      # START: Check practical exercise
+      # The description is untrusted input, so it reaches the scripts only through an environment variable.
+
+      - name: Check the description names every scenario ID
+        id: check-pr-ids
+        continue-on-error: true
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+          SCENARIO_IDS: "001-US3-AS1 001-US3-AS2 001-US3-AS3 001-US3-AS4 001-US3-AS5 001-US3-AS6"
+        run: |
+          [ -n "$PR_BODY" ] || { echo "The pull request description is empty"; exit 1; }
+          missing=""
+          for id in $SCENARIO_IDS; do
+            printf '%s\n' "$PR_BODY" | tr -d '\r' | grep -qE "${id}([^0-9]|$)" || missing="$missing $id"
+          done
+          [ -z "$missing" ] || { echo "Missing from the description:$missing"; exit 1; }
+
+      - name: Check the description says what the evidence does not prove
+        id: check-pr-limits
+        continue-on-error: true
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          printf '%s\n' "$PR_BODY" | tr -d '\r' | grep -qiE "(not|n't|n’t) prove" || { echo "No statement of what the evidence does not prove was found"; exit 1; }
+
+      - name: Wait for the CI workflow on the head commit
+        id: wait-ci
+        continue-on-error: true
+        uses: skills/exercise-toolkit/actions/wait-for-workflow@v0.9.3
+        with:
+          workflow-id: ci.yml
+          head-sha: ${{ github.event.pull_request.head.sha || github.sha }}
+          timeout: 300
+          fail-on-timeout: false
+
+      - name: Check CI passed
+        id: check-ci
+        continue-on-error: true
+        env:
+          CONCLUSION: ${{ steps.wait-ci.outputs.conclusion }}
+        run: |
+          echo "CI conclusion: ${CONCLUSION:-none}"
+          [ "$CONCLUSION" = "success" ]
+
+      - name: Update comment - step results
+        uses: GrantBirki/comment@v2.1.1
+        with:
+          repository: ${{ env.ISSUE_REPOSITORY }}
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          comment-id: ${{ steps.find-last-comment.outputs.comment-id }}
+          edit-mode: replace
+          file: exercise-toolkit/markdown-templates/step-feedback/step-results-table.md
+          # Tips render only when a check failed. Keep tip text free of single quotes.
+          vars: |
+            step_number: 3
+            results_table:
+              - description: "The pull request description names all six scenario IDs"
+                passed: ${{ steps.check-pr-ids.outcome == 'success' }}
+              - description: "The description says what the evidence does not prove"
+                passed: ${{ steps.check-pr-limits.outcome == 'success' }}
+              - description: "The CI workflow passed for the latest commit of the pull request"
+                passed: ${{ steps.check-ci.outcome == 'success' }}
+            tips: ${{ contains(steps.*.outcome, 'failure') && '["Edit the pull request description to add the missing scenario IDs and a What the evidence does not prove section. Mona checks again on every edit.", "If CI failed, select Details next to the CI check on the pull request, fix the first error in your codespace, then commit and push.", "Do not merge the pull request yet."]' || '[]' }}
+
+      # END: Check practical exercise
+
+      - name: Fail job if not all checks passed
+        if: contains(steps.*.outcome, 'failure')
+        run: exit 1
+
+  post_next_step_content:
+    name: Post next step content
+    needs: [find_exercise, check_step_work] # grading must gate progress
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read # checkout step content
+      actions: write # disable this step and enable the next one
+      issues: write # post step content and progress comments
+    env:
+      ISSUE_REPOSITORY: ${{ github.repository }}
+      ISSUE_NUMBER: ${{ needs.find_exercise.outputs.issue-number }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Get response templates
+        uses: actions/checkout@v6
+        with:
+          repository: skills/exercise-toolkit
+          path: exercise-toolkit
+          ref: v0.9.3
+
+      - name: Create comment - step finished
+        uses: GrantBirki/comment@v2.1.1
+        with:
+          repository: ${{ env.ISSUE_REPOSITORY }}
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          file: exercise-toolkit/markdown-templates/step-feedback/step-finished-prepare-next-step.md
+          vars: |
+            next_step_number: 4
+
+      - name: Create comment - add step content
+        uses: GrantBirki/comment@v2.1.1
+        with:
+          repository: ${{ env.ISSUE_REPOSITORY }}
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          file: ${{ env.STEP_4_FILE }}
+          vars: |
+            login: ${{ github.actor }}
+            full_repo_name: ${{ github.repository }}
+
+      - name: Create comment - watching for progress
+        uses: GrantBirki/comment@v2.1.1
+        with:
+          repository: ${{ env.ISSUE_REPOSITORY }}
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          file: exercise-toolkit/markdown-templates/step-feedback/watching-for-progress.md
+
+      - name: Disable current workflow and enable next one
+        run: |
+          gh workflow disable "${{ github.workflow }}"
+          gh workflow enable "Step 4"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
