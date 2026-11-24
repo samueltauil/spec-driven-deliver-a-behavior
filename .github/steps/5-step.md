@@ -27,7 +27,7 @@ Merging a pull request puts its changes on `main`, the branch everyone builds fr
 <details>
 <summary>Having trouble? 🤷</summary><br/>
 
-- **The merge button is gray or says checks are required:** CI is still running or failed. Wait for it, or fix the failure and push.
+- **The merge box says some checks haven't completed yet, or were not successful:** Wait for CI, or fix the failure and push. Don't merge until CI is green.
 
 - **You closed the pull request without merging:** Select **Reopen pull request**, wait for CI, then merge. Mona continues only after a merge.
 

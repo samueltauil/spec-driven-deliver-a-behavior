@@ -80,6 +80,8 @@ Your code is green in your codespace, @{{ login }}. :green_circle: But "it passe
 
 - **Mona says CI did not pass:** On the pull request, select **Details** next to the **CI** check to read the log. Fix the first failure in your codespace, then commit and push. Mona checks again on every push.
 
+- **CI is green, but Mona's CI row is ❌:** Mona waits up to 5 minutes for CI. Edit the pull request description, make any small change, and select **Update comment**. Mona checks again and finds the finished run.
+
 - **Mona did not respond:** Check that the pull request targets `main` and comes from `implement-dependent-privacy`. You can watch the run in the [Actions tab](https://github.com/{{ full_repo_name }}/actions).
 
 </details>

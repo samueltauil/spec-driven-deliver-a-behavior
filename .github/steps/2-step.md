@@ -29,12 +29,14 @@ In [Agent mode](https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode)
 
 1. When Copilot finishes, keep the changes it made.
 
-   > 💡 **Tip:** If Copilot says a test is wrong, don't let it change the test. Compare the test with the scenario in the spec: a real team would fix a wrong test in a separate, reviewed change, and would ask the product owner when the spec itself is unclear.
+   > 💡 **Tip:** If Copilot says a test is wrong, don't let it change the test. Compare the test with the scenario in the spec, and ask the product owner when the spec itself is unclear. If the test really is wrong, fix it yourself in its own commit, as the hint below shows. On a real team, that commit gets its own review.
 
 <details>
 <summary>Having trouble? 🤷</summary><br/>
 
 - **Copilot keeps failing the same test:** Ask it to explain which line of requirement `001-FR-011` the failing test checks. A short reply often unblocks it. You can also start a new chat and send the prompt again.
+
+- **A test really contradicts the spec:** Fix only that test yourself, keep its scenario ID in the name, and commit it on its own with a message that names the ID: `git add tests/` then `git commit -m "Fix the 001-US3-AS4 test to match the spec"`. Say so in your pull request description. Then ask Copilot to continue.
 
 - **Copilot edited a file it shouldn't have:** Undo that file with `git restore --source main -- <file>`, for example `git restore --source main -- features/claim-privacy.feature`. For your own test file, which isn't on `main`, use `git restore tests/claim-visibility.test.js`. Then ask Copilot again, and repeat that the file must not change.
 

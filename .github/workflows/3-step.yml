@@ -1,7 +1,7 @@
 name: Step 3
 
 on:
-  # Manual re-run for facilitators and testing.
+  # Testing only: grading needs a pull_request event. To check again, edit the pull request description.
   workflow_dispatch:
   # The learner opens the pull request; edits to its description and new pushes are checked again.
   pull_request:

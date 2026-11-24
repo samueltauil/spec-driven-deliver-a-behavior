@@ -91,10 +91,10 @@ jobs:
         continue-on-error: true
         run: |
           [ -f delivery/plan.md ] || { echo "delivery/plan.md was not found"; exit 1; }
-          value=$(tr -d '\r' < delivery/plan.md | grep -iE 'reviewed by:' | head -n 1 | sed -E 's/^.*[Rr][Ee][Vv][Ii][Ee][Ww][Ee][Dd] [Bb][Yy]:[*_]*[[:space:]]*//; s/[*_[:space:]]+$//')
+          value=$(tr -d '\r' < delivery/plan.md | grep -iE 'reviewed by:' | tail -n 1 | sed -E 's/^.*[Rr][Ee][Vv][Ii][Ee][Ww][Ee][Dd] [Bb][Yy]:[*_]*[[:space:]]*//; s/[*_[:space:]]+$//')
           echo "Reviewed by: ${value:-none}"
           case "$value" in "<"*) echo "Replace the placeholder with your role"; exit 1 ;; esac
-          [ "${#value}" -ge 3 ]
+          [ "${#value}" -ge 2 ]
 
       - name: Check a unit test file exists
         id: check-tests-exist
@@ -138,7 +138,7 @@ jobs:
                 passed: ${{ steps.check-tests-exist.outcome == 'success' }}
               - description: "The tests name all six scenario IDs"
                 passed: ${{ steps.check-test-ids.outcome == 'success' }}
-            tips: ${{ contains(steps.*.outcome, 'failure') && '["Open the failed check in the Actions tab to see which scenario IDs are missing, then add them to the plan or the test names.", "Write your role after Reviewed by: in the Human review section of delivery/plan.md.", "Save the tests as tests/claim-visibility.test.js and start each test name with its scenario ID.", "Commit and push to implement-dependent-privacy again."]' || '[]' }}
+            tips: ${{ contains(steps.*.outcome, 'failure') && '["Open the failed check in the Actions tab to see which scenario IDs are missing, then add them to the plan or the test names.", "Write your role after Reviewed by: in the Human review section at the end of delivery/plan.md, and delete any other Reviewed by line.", "Save the tests as tests/claim-visibility.test.js and start each test name with its scenario ID.", "Commit and push to implement-dependent-privacy again."]' || '[]' }}
 
       # END: Check practical exercise
 

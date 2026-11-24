@@ -61,7 +61,7 @@ Your copy of this repository comes with a ready-made [codespace](https://docs.gi
 
 Copilot drafts the plan; you decide whether it is good enough to build from. The plan must cover every scenario in `openspec/changes/implement-dependent-privacy/specs/member-claim-privacy/spec.md`, where each `#### Scenario:` line carries one ID, from `001-US3-AS1` to `001-US3-AS6`. To open a file by name, press `Ctrl+P` (`Cmd+P` on Mac) and type part of its name.
 
-1. Open Copilot Chat (select the chat icon at the top of the window, or press `Ctrl+Alt+I`, `⌃⌘I` on Mac). Set the mode to **Agent** in the chat box, then ask Copilot for a plan. The last sentences of the prompt keep it away from the code.
+1. Open Copilot Chat: select the chat icon at the top of the editor, or press `Ctrl+Alt+I` (`⌃⌘I` on Mac). Set the mode to **Agent** in the chat box, then ask Copilot for a plan. The last sentences of the prompt keep it away from the code.
 
    > ![Copilot prompt](https://img.shields.io/badge/-Prompt-text?style=social&logo=github%20copilot)
    >
@@ -134,7 +134,7 @@ Copilot drafts the plan; you decide whether it is good enough to build from. The
    > npm run test:unit
    > ```
 
-1. Check the summary at the end: every test fails with `Error: Not implemented`, and `ℹ pass 0`. That is red. Then run the acceptance examples, which fail for the same reason: `4 scenarios (4 failed)`.
+1. Check the summary at the end: each of the six scenario tests fails with `Error: Not implemented`, so `ℹ fail` is at least 6. That is red. Then run the acceptance examples, which fail for the same reason: `4 scenarios (4 failed)`.
 
    > ![Terminal command](https://img.shields.io/badge/Terminal-text?style=flat&logo=gnometerminal&labelColor=1f2328&color=eee)
    >
@@ -142,7 +142,7 @@ Copilot drafts the plan; you decide whether it is good enough to build from. The
    > npm run test:bdd
    > ```
 
-   > 💡 **Tip:** A test that passes now never reaches the rule, so it cannot prove it. Ask Copilot why it passes, and fix it before you continue.
+   > 💡 **Tip:** A scenario test that passes now never reaches the rule, so it cannot prove it. Ask Copilot why it passes, and fix it before you continue. An extra test for behavior that already works, such as rejecting a caller who is not signed in, may pass.
 
 1. Commit the plan and the tests, and push your branch.
 
@@ -165,7 +165,7 @@ Copilot drafts the plan; you decide whether it is good enough to build from. The
 
 - **Mona says a scenario ID is missing:** The check log lists the missing IDs. Add a row to the plan or a test for each one, then commit and push again. Mona checks every push to `implement-dependent-privacy`.
 
-- **Mona says the review line is empty:** Write your role after `Reviewed by:` on the same line, for example `Reviewed by: Business analyst`.
+- **Mona says the review line is missing:** In the section you added at the end of the file, write your role after `Reviewed by:` on the same line, for example `Reviewed by: Business analyst`. If Copilot added its own `Reviewed by:` line higher up, delete it.
 
 - **Mona did not respond:** Check that you pushed to `implement-dependent-privacy` and that `delivery/plan.md` or a file in `tests/` changed. You can watch the run in the [Actions tab](https://github.com/{{ full_repo_name }}/actions).
 
