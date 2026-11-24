@@ -10,7 +10,7 @@ Merging a pull request puts its changes on `main`, the branch everyone builds fr
 
 ### ⌨️ Activity: Review and merge the pull request
 
-1. In your browser, open your pull request from `implement-dependent-privacy`. Your archive commit started the **CI** check again. Wait until it shows a green check mark.
+1. In your browser, open your pull request from `implement-dependent-privacy`. Your archive commit started the **CI / Tests and spec validation** check again. Wait until it shows a green check mark. Mona's own checks appear in the same list.
 
    > ❕ **Important:** If **CI** fails, don't merge. Select **Details**, fix the first error in your codespace, then commit and push, and wait for a green check.
 

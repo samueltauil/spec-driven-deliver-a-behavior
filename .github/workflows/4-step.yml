@@ -134,7 +134,7 @@ jobs:
                 passed: ${{ steps.check-archive-folder.outcome == 'success' }}
               - description: "openspec validate --all --strict passes"
                 passed: ${{ steps.check-validate.outcome == 'success' }}
-            tips: ${{ contains(steps.*.outcome, 'failure') && '["Run npx openspec archive implement-dependent-privacy from the repository folder and answer y to Proceed with spec updates.", "Stage the whole folder with git add openspec so the move is committed, then commit and push.", "If two archive folders exist, keep one and remove the other with git rm -r."]' || '[]' }}
+            tips: ${{ contains(steps.*.outcome, 'failure') && '["Stage the whole folder with git add openspec so the move is committed, then commit and push.", "If openspec/changes/implement-dependent-privacy still exists, run npx openspec archive implement-dependent-privacy from the repository folder and answer y to Proceed with spec updates.", "If two archive folders exist, keep one and remove the other with git rm -r."]' || '[]' }}
 
       # END: Check practical exercise
 

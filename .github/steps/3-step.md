@@ -41,13 +41,13 @@ Your code is green in your codespace, @{{ login }}. :green_circle: But "it passe
 
 1. Give it a short title, such as `Deliver dependent claim privacy`. In the description, write in your own words:
 
-   - The requirement IDs and all six scenario IDs this change delivers.
+   - The requirement IDs and all six scenario IDs this change delivers, each written in full. A range such as `001-US3-AS1 to 001-US3-AS6` counts only its two ends.
    - The evidence: what you ran and the results you noted.
    - A section headed **What the evidence does not prove**, with at least one limit.
 
 1. Create the pull request, but **don't merge it yet**. You'll add one more commit in the next step.
 
-1. On the pull request's **Conversation** tab, scroll to the checks near the bottom. Wait for the **CI** check to finish with a green check mark. If it fails, select **Details**, read the first error, fix it in your codespace, then commit and push.
+1. On the pull request's **Conversation** tab, scroll to the checks near the bottom. Wait for the **CI / Tests and spec validation** check to finish with a green check mark. Mona's own checks appear in the same list. If it fails, select **Details**, read the first error, fix it in your codespace, then commit and push.
 
 1. Go back to the exercise issue. Wait a moment for Mona to check your work, provide feedback, and share the next lesson.
 
@@ -56,7 +56,7 @@ Your code is green in your codespace, @{{ login }}. :green_circle: But "it passe
 <details>
 <summary>Having trouble? 🤷</summary><br/>
 
-- **Mona says scenario IDs are missing from the description:** Edit the pull request description: select **...** at the top right of the description, then **Edit**. Add the missing IDs and select **Update comment**. Mona checks again on every edit.
+- **Mona says scenario IDs are missing from the description:** Edit the pull request description: select **...** at the top right of the description, then **Edit**. Add the missing IDs, each written in full, and select **Update comment**. Mona checks again on every edit.
 
 - **Mona says the limits are missing:** Add a line or heading that contains the words `does not prove`, followed by at least one limit.
 

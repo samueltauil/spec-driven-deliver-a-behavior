@@ -26,7 +26,7 @@ An **active change**, a folder under `openspec/changes/`, describes rules that a
    > npx openspec archive implement-dependent-privacy
    > ```
 
-1. Read the summary before you answer. It should show `Task status: ✓ Complete`, then `Specs to update:` with `member-claim-privacy: create`, then the question `Proceed with spec updates? (Y/n)`. Type `y` and press `Enter`.
+1. Read the summary before you answer. It should show `Task status: ✓ Complete`, then `Specs to update:` with `member-claim-privacy: create`, then the question `Proceed with spec updates? (Y/n)`. Type `y` and press `Enter`. Answering `n` here still archives the change, but without writing the living spec.
 
    > ❕ **Important:** If you see `Warning: ... incomplete task(s) found. Continue? (y/N)` instead, type `n` and press `Enter`. The command prints `Archive cancelled.` and changes nothing. Tick the remaining tasks, save `tasks.md`, then run the command again.
 
@@ -37,7 +37,9 @@ An **active change**, a folder under `openspec/changes/`, describes rules that a
 
 - **`Change 'implement-dependent-privacy' not found`:** Either the change is already archived, or the terminal is not in the repository folder. Run `git status` to see what changed, and `cd` back to the repository folder, the one that holds `package.json`.
 
-- **`Error: Archive '...' already exists`:** You already archived the change today. Nothing more to do: go to the next activity.
+- **`Error: Archive '...' already exists`:** You archived the change earlier and the active folder came back, for example after `git restore`. If `openspec/specs/member-claim-privacy/spec.md` exists, delete the leftover folder with `rm -r openspec/changes/implement-dependent-privacy` and go to the next activity. If it doesn't exist, delete the dated `implement-dependent-privacy` folder under `openspec/changes/archive/`, tick the tasks again and run the command again.
+
+- **The output says `Skipping spec updates. Proceeding with archive.`:** You answered `n`, so the living spec wasn't written. Run `git restore openspec`, delete the dated `implement-dependent-privacy` folder under `openspec/changes/archive/`, tick the tasks again, then run the command again and answer `y`.
 
 - **The command didn't wait for your answer, or suggests adding `--yes`:** Run it in the codespace terminal, not through Copilot Chat, and don't add `--yes`: it skips the two decisions you make here. An agent can't answer the question for you, and it shouldn't.
 

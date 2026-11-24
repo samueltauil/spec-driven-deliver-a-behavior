@@ -175,8 +175,8 @@ Copilot drafts the plan; you decide whether it is good enough to build from. The
 
 - **Mona says a scenario ID is missing:** The check log lists the missing IDs. Add a row to the plan or a test for each one, then commit and push again. Mona checks every push to `implement-dependent-privacy`.
 
-- **Mona says the review line is missing:** Mona reads the last `Reviewed by:` line in the plan. In the section you added at the end, write your role after `Reviewed by:` on the same line, for example `Reviewed by: Business analyst`. Delete any `Reviewed by:` line Copilot added higher up, so the plan has one clear sign-off.
+- **Mona says the review line is missing:** Mona reads the last `Reviewed by:` line in the plan. In the section you added at the end, write your role after `Reviewed by:` on the same line, for example `Reviewed by: Business analyst`. A placeholder such as `TBD` or `<your role, for example Tester>` doesn't count. Delete any `Reviewed by:` line Copilot added higher up, so the plan has one clear sign-off.
 
-- **Mona did not respond:** Check that you pushed to `implement-dependent-privacy` and that `delivery/plan.md` or a file in `tests/` changed. You can watch the run in the [Actions tab](https://github.com/{{ full_repo_name }}/actions).
+- **Mona did not respond:** Check that `git push` finished without an error, and run `git branch --show-current`. If the branch isn't `implement-dependent-privacy`, run `git switch -c implement-dependent-privacy`, then `git push -u origin implement-dependent-privacy`. You can watch the run in the [Actions tab](https://github.com/{{ full_repo_name }}/actions).
 
 </details>
