@@ -50,7 +50,7 @@ Pick one approved story in your team's backlog. List its scenario IDs, and for e
 
 ### What's next?
 
-<img width="800" alt="Spec-driven delivery workshop: four exercises, one delivery loop. Exercise 1, Trace the loop: intent to evidence. Exercise 2, Find the missing rules: before you build. Exercise 3, Deliver a behavior: test-first, with Copilot, highlighted as You are here. Exercise 4, Draft your first spec: capstone." src="../images/workshop-map.png">
+<img width="800" alt="Workshop map, Spec-driven delivery workshop: four exercises, one delivery loop. 1, Trace the loop: intent to evidence. 2, Find the missing rules: before you build. 3, Deliver a behavior: test-first, with Copilot. 4, Draft your first spec: capstone. Exercise 3 is highlighted: You are here." src="../images/workshop-map.png">
 
 - Continue the workshop with exercise 4, **Draft Your First Spec**, where you turn an unfamiliar business problem into a validated OpenSpec change of your own and decide whether it is ready to build.
 - Read about [Agent mode in VS Code](https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode) and how to [add repository custom instructions](https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions) for Copilot.

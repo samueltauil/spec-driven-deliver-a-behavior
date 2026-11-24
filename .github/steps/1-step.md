@@ -1,6 +1,6 @@
 ## Step 1: Plan the delivery and write failing tests
 
-<img width="800" alt="Exercise 3 of 4 of the Spec-driven delivery workshop: Deliver an Approved Behavior with Copilot. Go from failing tests to a merged, archived change, with a person at every gate. The loop runs from Intent to Requirement, Scenario, Code and Evidence, with Scenario, Code and Evidence highlighted." src="../images/banner.png">
+<img width="800" alt="Exercise 3 of 4 of the Spec-Driven Delivery workshop: Deliver an Approved Behavior with Copilot. Go from failing tests to a merged, archived change, with a person at every gate. Tools: Codespaces, GitHub Copilot, OpenSpec and Gherkin. Focus of this exercise: Scenario, Code and Evidence." src="../images/banner.png">
 
 Welcome back to the Contoso Health Plan delivery team, @{{ login }}! :wave: Subscribers on a family plan can see the claims of their dependents in the member portal, but some claims must stay private. The product owner and the privacy lead approved the change `implement-dependent-privacy`, and today your team delivers it with Copilot. Before anyone writes code, you need to know which test will prove each approved scenario.
 
@@ -26,7 +26,7 @@ Your copy of this repository comes with a ready-made [codespace](https://docs.gi
 
    [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/{{ full_repo_name }}?quickstart=1)
 
-1. On the codespace page, check that the repository is `{{ full_repo_name }}`, your copy, and not the original exercise. Then create the codespace.
+1. On the codespace page, check that the repository is `{{ full_repo_name }}`, your copy, and not the original exercise. Then select **Create new codespace**. If you already have a codespace for this repository, the page offers **Resume this codespace** instead; that works too.
 
 1. Wait for the editor to open. The first start takes about 2 to 4 minutes, because the codespace installs everything this exercise needs before it opens. The approved proposal opens automatically.
 
@@ -51,7 +51,7 @@ Your copy of this repository comes with a ready-made [codespace](https://docs.gi
 
 - **The codespace opened the original exercise:** Close that tab and use the button above, which points to your copy. You can also start one from your repository page: **Code** > **Codespaces** > **Create codespace on main**.
 
-- **`npm ci` failed during setup, or a command says a package is missing:** Run `npm ci` in the terminal yourself, then try again.
+- **A command says a package is missing:** The setup did not finish. Run `npm ci` in the terminal, then try again.
 
 - **Copilot Chat asks you to sign in:** Select the Copilot icon in the Status Bar at the bottom of the editor, then sign in with your GitHub account.
 
@@ -59,13 +59,9 @@ Your copy of this repository comes with a ready-made [codespace](https://docs.gi
 
 ### ⌨️ Activity 2: Ask Copilot for a plan, then review it
 
-Copilot drafts the plan; you decide whether it is good enough to build from. To open a file by name, press `Ctrl+P` (`Cmd+P` on Mac) and type part of its name.
+Copilot drafts the plan; you decide whether it is good enough to build from. The plan must cover every scenario in `openspec/changes/implement-dependent-privacy/specs/member-claim-privacy/spec.md`, where each `#### Scenario:` line carries one ID, from `001-US3-AS1` to `001-US3-AS6`. To open a file by name, press `Ctrl+P` (`Cmd+P` on Mac) and type part of its name.
 
-1. Open `openspec/changes/implement-dependent-privacy/specs/member-claim-privacy/spec.md` and skim it. Each `#### Scenario:` line carries one scenario ID, from `001-US3-AS1` to `001-US3-AS6`.
-
-1. Open Copilot Chat (select the chat icon at the top of the window, or press `Ctrl+Alt+I`, `⌃⌘I` on Mac). In the chat box, set the mode to **Agent**.
-
-1. Ask Copilot for a plan. The last sentences keep it away from the code.
+1. Open Copilot Chat (select the chat icon at the top of the window, or press `Ctrl+Alt+I`, `⌃⌘I` on Mac). Set the mode to **Agent** in the chat box, then ask Copilot for a plan. The last sentences of the prompt keep it away from the code.
 
    > ![Copilot prompt](https://img.shields.io/badge/-Prompt-text?style=social&logo=github%20copilot)
    >
@@ -107,6 +103,8 @@ Copilot drafts the plan; you decide whether it is good enough to build from. To 
 
 - **There is no Agent mode in the chat box:** Make sure you are signed in to Copilot, then look for the mode picker in the chat box. If your organization turned Agent mode off, create `delivery/plan.md` yourself and use Ask mode to draft rows that you paste in.
 
+- **Copilot stops answering or says you've reached a limit:** Steps 1 and 2 need Copilot's Agent mode. In a workshop, pair with a neighbor whose Copilot still answers. On your own, continue when your monthly allowance resets.
+
 - **Copilot edited another file:** Undo it with `git restore <file>` in the terminal, then ask again. Run `git status` to see what changed.
 
 - **Copilot listed a conflict or an open question:** Good. Read it against the spec. If the spec answers it, note the answer in the plan. If it doesn't, a real team would ask the product owner before coding.
@@ -128,9 +126,7 @@ Copilot drafts the plan; you decide whether it is good enough to build from. To 
    > Do not implement the code. Do not change src/, features/ or openspec/.
    > ```
 
-1. Keep the new file and read the test names. Each one starts with a scenario ID.
-
-1. Before you run anything, predict how many tests will fail. The stub throws `Not implemented` every time it is called. Then run the unit tests.
+1. Keep the new file and read the test names: each one starts with a scenario ID. Before you run anything, predict how many tests will fail. The stub throws `Not implemented` every time it is called. Then run the unit tests.
 
    > ![Terminal command](https://img.shields.io/badge/Terminal-text?style=flat&logo=gnometerminal&labelColor=1f2328&color=eee)
    >

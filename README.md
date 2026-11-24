@@ -1,6 +1,6 @@
 # Deliver an Approved Behavior with Copilot
 
-<img width="800" alt="Exercise 3 of 4 of the Spec-driven delivery workshop: Deliver an Approved Behavior with Copilot. Go from failing tests to a merged, archived change, with a person at every gate. The loop runs from Intent to Requirement, Scenario, Code and Evidence, with Scenario, Code and Evidence highlighted." src=".github/images/banner.png">
+<img width="800" alt="Exercise 3 of 4 of the Spec-Driven Delivery workshop: Deliver an Approved Behavior with Copilot. Go from failing tests to a merged, archived change, with a person at every gate. Tools: Codespaces, GitHub Copilot, OpenSpec and Gherkin. Focus of this exercise: Scenario, Code and Evidence." src=".github/images/banner.png">
 
 _Go from an approved change to failing tests, working code, a pull request with evidence and an updated living spec, with Copilot doing most of the coding and a person at every gate._
 
@@ -12,7 +12,7 @@ _Go from an approved change to failing tests, working code, a pull request with 
 - **Prerequisites**:
   - Exercises 1 and 2 of this workshop are recommended. You should be comfortable with branches, commits and pull requests. If they are new to you, start with [Introduction to GitHub](https://github.com/skills/introduction-to-github).
   - Access to [GitHub Codespaces](https://docs.github.com/en/codespaces/overview). Personal accounts include monthly free usage.
-  - [GitHub Copilot](https://github.com/features/copilot) with Copilot Chat in Agent mode. Copilot Free is enough.
+  - [GitHub Copilot](https://github.com/features/copilot) with Copilot Chat in Agent mode. Copilot Free works, but its monthly allowance is limited, and the full workshop uses many prompts.
 - **How long**: This exercise takes less than 80 minutes to complete.
 
 In this exercise, you will:
@@ -25,7 +25,7 @@ In this exercise, you will:
 
 This is exercise 3 of 4 in the **Spec-Driven Delivery with OpenSpec, Gherkin and GitHub Copilot** workshop. All organizations, people and data in it are fictional.
 
-<img width="800" alt="Spec-driven delivery workshop: four exercises, one delivery loop. Exercise 1, Trace the loop: intent to evidence. Exercise 2, Find the missing rules: before you build. Exercise 3, Deliver a behavior: test-first, with Copilot, highlighted as You are here. Exercise 4, Draft your first spec: capstone." src=".github/images/workshop-map.png">
+<img width="800" alt="Workshop map, Spec-driven delivery workshop: four exercises, one delivery loop. 1, Trace the loop: intent to evidence. 2, Find the missing rules: before you build. 3, Deliver a behavior: test-first, with Copilot. 4, Draft your first spec: capstone. Exercise 3 is highlighted: You are here." src=".github/images/workshop-map.png">
 
 ### How to start this exercise
 

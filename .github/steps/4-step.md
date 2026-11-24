@@ -73,7 +73,7 @@ An **active change**, a folder under `openspec/changes/`, describes rules that a
    > git push
    > ```
 
-1. Wait a moment for Mona to check your work, provide feedback, and share the next lesson.
+1. Go back to this issue in your browser. Wait a moment for Mona to check your work, provide feedback, and share the next lesson.
 
 <details>
 <summary>Having trouble? 🤷</summary><br/>

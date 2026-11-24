@@ -38,6 +38,8 @@ In [Agent mode](https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode)
 
 - **Copilot edited a file it shouldn't have:** Undo that file with `git restore --source main -- <file>`, for example `git restore --source main -- features/claim-privacy.feature`. For your own test file, which isn't on `main`, use `git restore tests/claim-visibility.test.js`. Then ask Copilot again, and repeat that the file must not change.
 
+- **Copilot stops answering or says you've reached a limit:** This step needs Copilot's Agent mode. In a workshop, pair with a neighbor whose Copilot still answers. On your own, continue when your monthly allowance resets; your branch keeps your progress.
+
 - **Copilot wrote a lot more code than one function:** That's a scope problem, not a style choice. Ask it to keep the change to `src/claim-visibility.js` only.
 
 </details>
@@ -85,7 +87,7 @@ Green tests are evidence, not proof. Before you push, you check what changed and
    > git push
    > ```
 
-1. Wait a moment for Mona to check your work, provide feedback, and share the next lesson.
+1. Go back to this issue in your browser. Wait a moment for Mona to check your work, provide feedback, and share the next lesson.
 
 <details>
 <summary>Having trouble? 🤷</summary><br/>
