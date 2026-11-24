@@ -135,7 +135,7 @@ jobs:
                 passed: ${{ steps.check-bdd.outcome == 'success' }}
               - description: "features/, openspec/ and src/claim-status.js match main (ticking tasks.md is fine)"
                 passed: ${{ steps.check-protected-unchanged.outcome == 'success' }}
-            tips: ${{ contains(steps.*.outcome, 'failure') && '["Run npm test in your codespace and fix the first failure in src/claim-visibility.js, not in the tests.", "Restore protected files with git restore --source main -- features openspec src/claim-status.js, then commit.", "Open the failed check in the Actions tab to read the full test output.", "Commit and push to implement-dependent-privacy again."]' || '[]' }}
+            tips: ${{ contains(steps.*.outcome, 'failure') && '["Run npm test in your codespace and fix the first failure in src/claim-visibility.js, not in the tests.", "Restore protected files with git restore --source main -- features openspec src/claim-status.js, then git add features openspec src/claim-status.js, commit and push.", "Open the failed check in the Actions tab to read the full test output.", "Commit and push to implement-dependent-privacy again."]' || '[]' }}
 
       # END: Check practical exercise
 

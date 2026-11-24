@@ -39,7 +39,7 @@ An **active change**, a folder under `openspec/changes/`, describes rules that a
 
 - **`Error: Archive '...' already exists`:** You already archived the change today. Nothing more to do: go to the next activity.
 
-- **The command didn't wait for your answer:** Run it in the codespace terminal, not through Copilot Chat. An agent can't answer the question for you, and it shouldn't.
+- **The command didn't wait for your answer, or suggests adding `--yes`:** Run it in the codespace terminal, not through Copilot Chat, and don't add `--yes`: it skips the two decisions you make here. An agent can't answer the question for you, and it shouldn't.
 
 </details>
 

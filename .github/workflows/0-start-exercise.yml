@@ -27,7 +27,7 @@ jobs:
     uses: skills/exercise-toolkit/.github/workflows/start-exercise.yml@v0.9.3
     with:
       exercise-title: "Deliver an Approved Behavior with Copilot"
-      intro-message: "Deliver one approved OpenSpec change with Copilot in a ready-made codespace: a reviewed plan, failing tests, working code, a pull request with CI, an archived change and a human merge."
+      intro-message: "Deliver one approved OpenSpec change with Copilot in a ready-made codespace, from a reviewed plan and failing tests to working code, a pull request with CI, an archived change and a human merge."
 
   post_next_step_content:
     name: Post next step content

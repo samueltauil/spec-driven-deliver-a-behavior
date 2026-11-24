@@ -9,7 +9,7 @@
   "scripts": {
     "validate:spec": "openspec validate --all --strict --no-interactive",
     "test": "npm run test:unit && npm run test:bdd",
-    "test:unit": "node --test \"tests/*.test.js\"",
+    "test:unit": "node --test --test-reporter=spec \"tests/*.test.js\"",
     "test:bdd": "cucumber-js",
     "check": "npm run validate:spec && npm test"
   },

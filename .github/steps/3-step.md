@@ -18,7 +18,7 @@ Your code is green in your codespace, @{{ login }}. :green_circle: But "it passe
    > npm run check
    > ```
 
-1. Note the three results you'll use as evidence: the OpenSpec validation line, the unit test summary (`ℹ pass` and `ℹ fail`) and the Cucumber summary (`4 scenarios (4 passed)`).
+1. Note the three results you'll use as evidence: the OpenSpec totals line (`Totals: 2 passed, 0 failed (2 items)`), the unit test summary (`ℹ pass` and `ℹ fail`) and the Cucumber summary (`4 scenarios (4 passed)`).
 
 1. From memory, before you look anything up, answer the question from the first exercise: what does this evidence **not** prove? Think about what the tests don't check, such as real member data, real screens, or how a claim gets marked sensitive.
 
@@ -81,6 +81,8 @@ Your code is green in your codespace, @{{ login }}. :green_circle: But "it passe
 - **Mona says CI did not pass:** On the pull request, select **Details** next to the **CI** check to read the log. Fix the first failure in your codespace, then commit and push. Mona checks again on every push.
 
 - **CI is green, but Mona's CI row is ❌:** Mona waits up to 5 minutes for CI. Edit the pull request description, make any small change, and select **Update comment**. Mona checks again and finds the finished run.
+
+- **You opened the pull request before Mona posted this step:** Edit its description, make any small change, and select **Update comment**. Mona checks it then.
 
 - **Mona did not respond:** Check that the pull request targets `main` and comes from `implement-dependent-privacy`. You can watch the run in the [Actions tab](https://github.com/{{ full_repo_name }}/actions).
 

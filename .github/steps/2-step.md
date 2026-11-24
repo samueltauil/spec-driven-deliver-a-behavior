@@ -94,7 +94,13 @@ Green tests are evidence, not proof. Before you push, you check what changed and
 <details>
 <summary>Having trouble? 🤷</summary><br/>
 
-- **Mona says the protected files changed:** Mona compares `features/`, `openspec/` and `src/claim-status.js` with `main`. Ticking boxes in `tasks.md` is fine. Restore the rest with `git restore --source main -- features openspec src/claim-status.js`, then commit and push.
+- **Mona says the protected files changed:** Mona compares `features/`, `openspec/` and `src/claim-status.js` with `main`. Ticking boxes in `tasks.md` is fine. Restore the rest with `git restore --source main -- features openspec src/claim-status.js`, then stage, commit and push the fix:
+
+  ```bash
+  git add features openspec src/claim-status.js
+  git commit -m "Restore protected files"
+  git push
+  ```
 
 - **Mona says the tests fail, but they pass in your codespace:** Make sure you committed every change. `git status --short` should print nothing after you commit. Then push again.
 

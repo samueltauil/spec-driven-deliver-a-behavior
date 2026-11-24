@@ -23,6 +23,7 @@ SOFTWARE.
 ---
 
 Third-party images: the screenshots codespaces-status.png, terminal-tab.png,
-compare-pull-request.png and merge-pull-request.png in .github/images are
-Copyright (c) GitHub, Inc. and are used under the MIT License. The diagrams use
-Primer Octicons, Copyright (c) GitHub, Inc., MIT License.
+compare-pull-request.png, merge-pull-request.png, copilot-agent-mode.png and
+copilot-keep-changes.png in .github/images are Copyright (c) GitHub, Inc. and
+are used under the MIT License. The diagrams use Primer Octicons, Copyright (c)
+GitHub, Inc., MIT License.

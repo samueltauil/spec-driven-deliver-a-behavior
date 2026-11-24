@@ -93,7 +93,8 @@ jobs:
           [ -f delivery/plan.md ] || { echo "delivery/plan.md was not found"; exit 1; }
           value=$(tr -d '\r' < delivery/plan.md | grep -iE 'reviewed by:' | tail -n 1 | sed -E 's/^.*[Rr][Ee][Vv][Ii][Ee][Ww][Ee][Dd] [Bb][Yy]:[*_]*[[:space:]]*//; s/[*_[:space:]]+$//')
           echo "Reviewed by: ${value:-none}"
-          case "$value" in "<"*) echo "Replace the placeholder with your role"; exit 1 ;; esac
+          case "$value" in "<"*|"["*) echo "Replace the placeholder with your role"; exit 1 ;; esac
+          if printf '%s' "$value" | grep -qiE '^(tbd|todo|pending|name|your role|n/?a|-+|\.+)$'; then echo "Replace the placeholder with your role"; exit 1; fi
           [ "${#value}" -ge 2 ]
 
       - name: Check a unit test file exists

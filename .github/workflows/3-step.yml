@@ -96,7 +96,7 @@ jobs:
         env:
           PR_BODY: ${{ github.event.pull_request.body }}
         run: |
-          printf '%s\n' "$PR_BODY" | tr -d '\r' | grep -qiE "(not|n't|n’t) prove" || { echo "No statement of what the evidence does not prove was found"; exit 1; }
+          printf '%s\n' "$PR_BODY" | tr -d '\r*_' | grep -qiE "(not|n't|n’t)[[:space:]]+prove" || { echo "No statement of what the evidence does not prove was found"; exit 1; }
 
       - name: Wait for the CI workflow on the head commit
         id: wait-ci

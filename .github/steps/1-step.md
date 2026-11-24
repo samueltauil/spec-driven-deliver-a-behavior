@@ -61,7 +61,11 @@ Your copy of this repository comes with a ready-made [codespace](https://docs.gi
 
 Copilot drafts the plan; you decide whether it is good enough to build from. The plan must cover every scenario in `openspec/changes/implement-dependent-privacy/specs/member-claim-privacy/spec.md`, where each `#### Scenario:` line carries one ID, from `001-US3-AS1` to `001-US3-AS6`. To open a file by name, press `Ctrl+P` (`Cmd+P` on Mac) and type part of its name.
 
-1. Open Copilot Chat: select the chat icon at the top of the editor, or press `Ctrl+Alt+I` (`⌃⌘I` on Mac). Set the mode to **Agent** in the chat box, then ask Copilot for a plan. The last sentences of the prompt keep it away from the code.
+1. Open Copilot Chat: select the chat icon at the top of the editor, or press `Ctrl+Alt+I` (`⌃⌘I` on Mac). Set the mode to **Agent** in the chat box.
+
+   <img width="440" alt="The Copilot Chat mode picker open above the chat box, with Agent highlighted above Ask and Plan" src="../images/copilot-agent-mode.png">
+
+   Then ask Copilot for a plan. The last sentences of the prompt keep it away from the code.
 
    > ![Copilot prompt](https://img.shields.io/badge/-Prompt-text?style=social&logo=github%20copilot)
    >
@@ -80,7 +84,11 @@ Copilot drafts the plan; you decide whether it is good enough to build from. The
 
    > 💡 **Tip:** Copilot's output varies from run to run, so your plan will not match a neighbor's. That's fine: Mona checks files, tests and CI, never Copilot's wording.
 
-1. Copilot shows the file it created. Keep it, then open `delivery/plan.md` next to the spec and review it as the human gate:
+1. Copilot lists the files it changed above the chat box. Select **Keep** to accept `delivery/plan.md`.
+
+   <img width="420" alt="The Copilot Chat panel listing two changed files above the chat box, with the Keep and Undo buttons highlighted" src="../images/copilot-keep-changes.png">
+
+   Then open `delivery/plan.md` next to the spec and review it as the human gate:
 
    - There is one row for each of the six scenario IDs, and no invented IDs.
    - Each row names the right requirement: `001-US3-AS1` to `AS3` belong to `001-FR-011`, `AS4` and `AS5` to `001-FR-012`, and `AS6` to `001-FR-013`.
@@ -134,7 +142,7 @@ Copilot drafts the plan; you decide whether it is good enough to build from. The
    > npm run test:unit
    > ```
 
-1. Check the summary at the end: each of the six scenario tests fails with `Error: Not implemented`, so `ℹ fail` is at least 6. That is red. Then run the acceptance examples, which fail for the same reason: `4 scenarios (4 failed)`.
+1. Scroll up to the summary lines that start with `ℹ`, just above the `✖ failing tests:` list. `ℹ fail` is at least 6, and each of the six scenario tests shows `Error: Not implemented`. That is red. Then run the acceptance examples, which fail for the same reason: `4 scenarios (4 failed)`.
 
    > ![Terminal command](https://img.shields.io/badge/Terminal-text?style=flat&logo=gnometerminal&labelColor=1f2328&color=eee)
    >
@@ -154,6 +162,8 @@ Copilot drafts the plan; you decide whether it is good enough to build from. The
    > git push -u origin implement-dependent-privacy
    > ```
 
+   Git prints a link to create a pull request. Don't open one yet; you'll do that in step 3.
+
 1. Go back to this issue in your browser. Wait a moment for Mona to check your work, provide feedback, and share the next lesson.
 
 <details>
@@ -165,7 +175,7 @@ Copilot drafts the plan; you decide whether it is good enough to build from. The
 
 - **Mona says a scenario ID is missing:** The check log lists the missing IDs. Add a row to the plan or a test for each one, then commit and push again. Mona checks every push to `implement-dependent-privacy`.
 
-- **Mona says the review line is missing:** In the section you added at the end of the file, write your role after `Reviewed by:` on the same line, for example `Reviewed by: Business analyst`. If Copilot added its own `Reviewed by:` line higher up, delete it.
+- **Mona says the review line is missing:** Mona reads the last `Reviewed by:` line in the plan. In the section you added at the end, write your role after `Reviewed by:` on the same line, for example `Reviewed by: Business analyst`. Delete any `Reviewed by:` line Copilot added higher up, so the plan has one clear sign-off.
 
 - **Mona did not respond:** Check that you pushed to `implement-dependent-privacy` and that `delivery/plan.md` or a file in `tests/` changed. You can watch the run in the [Actions tab](https://github.com/{{ full_repo_name }}/actions).
 
