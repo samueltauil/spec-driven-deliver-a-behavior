@@ -56,7 +56,7 @@ Your code is green in your codespace, @{{ login }}. :green_circle: But "it passe
 <details>
 <summary>Having trouble? 🤷</summary><br/>
 
-- **Mona says scenario IDs are missing from the description:** Edit the pull request description: select **...** at the top right of the description, then **Edit**. Add the missing IDs, each written in full, and select **Update comment**. Mona checks again on every edit.
+- **Mona says scenario IDs are missing from the description:** Edit the pull request description: select the three-dot menu at the top right of the description, then **Edit**. Add the missing IDs, each written in full, and select **Update comment**. Mona checks again on every edit.
 
 - **Mona says the limits are missing:** Add a line or heading that contains the words `does not prove`, followed by at least one limit.
 

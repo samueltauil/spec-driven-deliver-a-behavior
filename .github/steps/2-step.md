@@ -106,6 +106,6 @@ Green tests are evidence, not proof. Before you push, you check what changed and
 
 - **Mona says the scenario IDs are missing from the tests:** Your test names must still start with the six IDs from step 1. Run `git log --oneline -- tests/` to find your step 1 commit, restore the tests from it with `git restore --source <commit> -- tests/`, then commit and push.
 
-- **Mona did not respond:** Mona checks pushes to `implement-dependent-privacy` that change `src/` or `tests/`. To check again without a new change, go to the [Actions tab](https://github.com/{{ full_repo_name }}/actions), select **Step 2**, then **Run workflow**, choose the `implement-dependent-privacy` branch and select **Run workflow**.
+- **Mona did not respond:** Mona checks every push to `implement-dependent-privacy`. Check that `git push` finished without an error and that `git branch --show-current` prints `implement-dependent-privacy`. To check again without a new change, go to the [Actions tab](https://github.com/{{ full_repo_name }}/actions), select **Step 2**, then **Run workflow**, choose the `implement-dependent-privacy` branch and select **Run workflow**.
 
 </details>

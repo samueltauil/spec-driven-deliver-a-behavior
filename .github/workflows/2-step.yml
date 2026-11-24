@@ -3,7 +3,7 @@ name: Step 2
 on:
   # Manual re-run for facilitators and testing. Choose the implement-dependent-privacy branch.
   workflow_dispatch:
-  # The learner pushes the implementation to a branch that does not exist in the template.
+  # The learner pushes the implementation to the same branch; only the enabled step workflow runs.
   # No paths filter, so every push gets feedback, including one that only restores protected files.
   push:
     branches:
