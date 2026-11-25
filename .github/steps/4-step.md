@@ -12,7 +12,7 @@ An **active change**, a folder under `openspec/changes/`, describes rules that a
 
 ### ⌨️ Activity 1: Tick the tasks and archive the change
 
-1. In your codespace, open `openspec/changes/implement-dependent-privacy/tasks.md`. For each task that really happened, change `- [ ]` to `- [x]`. By now that should be all six: the plan and its review, the red tests, the code, the green tests, the pull request and CI. Save the file.
+1. In your editor, open `openspec/changes/implement-dependent-privacy/tasks.md`. For each task that really happened, change `- [ ]` to `- [x]`. By now that should be all six: the plan and its review, the red tests, the code, the green tests, the pull request and CI. Save the file.
 
    > 💡 **Tip:** Tick only what happened. If a task didn't happen, finish it first. A ticked box is a claim that someone can check.
 
@@ -41,7 +41,7 @@ An **active change**, a folder under `openspec/changes/`, describes rules that a
 
 - **The output says `Skipping spec updates. Proceeding with archive.`:** You answered `n`, so the living spec wasn't written. Run `git restore openspec`, delete the dated `implement-dependent-privacy` folder under `openspec/changes/archive/`, tick the tasks again, then run the command again and answer `y`.
 
-- **The command didn't wait for your answer, or suggests adding `--yes`:** Run it in the codespace terminal, not through Copilot Chat, and don't add `--yes`: it skips the two decisions you make here. An agent can't answer the question for you, and it shouldn't.
+- **The command didn't wait for your answer, or suggests adding `--yes`:** Run it yourself in the editor's terminal, not through Copilot Chat, and don't add `--yes`: it skips the two decisions you make here. An agent can't answer the question for you, and it shouldn't.
 
 </details>
 

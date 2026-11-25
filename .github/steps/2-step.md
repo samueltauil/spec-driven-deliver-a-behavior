@@ -4,13 +4,13 @@ Your plan is reviewed and your tests are red, @{{ login }}. :red_circle: Now Cop
 
 ### 📖 Theory: The target doesn't move
 
-In [Agent mode](https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode), Copilot plans the edits, changes files, runs commands such as tests, reads the results and tries again until it reaches the goal. In spec-driven delivery the approved spec, the feature file and your red tests are the target, so only the code may change. If Copilot edits a test, a scenario or the spec to get a pass, it has moved the target, and the green result proves nothing. This repository's [custom instructions](https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions) in `.github/copilot-instructions.md` give Copilot the same rule, and your review of the diff is the check that it followed them. Copilot's output varies, so Mona grades files and test results, never Copilot's wording.
+In [Agent mode](https://code.visualstudio.com/docs/agents/run/chat-view), Copilot plans the edits, changes files, runs commands such as tests, reads the results and tries again until it reaches the goal. In spec-driven delivery the approved spec, the feature file and your red tests are the target, so only the code may change. If Copilot edits a test, a scenario or the spec to get a pass, it has moved the target, and the green result proves nothing. This repository's [custom instructions](https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions) in `.github/copilot-instructions.md` give Copilot the same rule, and your review of the diff is the check that it followed them. Copilot's output varies, so Mona grades files and test results, never Copilot's wording.
 
 <img width="800" alt="Deliver an approved behavior: five stages in a row. Stage 1, Plan: red tests, reviewed plan, marked Human check. Stage 2, Implement: make the tests pass, marked You are here. Stage 3, Pull request: CI checks every change. Stage 4, Archive: update the living spec. Stage 5, Merge: a person approves, marked Human check." src="../images/delivery-flow-2.png">
 
 ### ⌨️ Activity 1: Ask Copilot to implement the rule
 
-1. In your codespace, open Copilot Chat in **Agent** mode. You can keep the chat from step 1 or start a new one.
+1. In your editor, open Copilot Chat in **Agent** mode. You can keep the chat from step 1 or start a new one.
 
 1. Ask Copilot to implement the rule. The prompt names the goal, the one file it may change and the files it must not touch.
 
@@ -102,7 +102,7 @@ Green tests are evidence, not proof. Before you push, you check what changed and
   git push
   ```
 
-- **Mona says the tests fail, but they pass in your codespace:** Make sure you committed every change. `git status --short` should print nothing after you commit. Then push again.
+- **Mona says the tests fail, but they pass in your terminal:** Make sure you committed every change. `git status --short` should print nothing after you commit. Then push again.
 
 - **Mona says the scenario IDs are missing from the tests:** Your test names must still start with the six IDs from step 1. Run `git log --oneline -- tests/` to find your step 1 commit, restore the tests from it with `git restore --source <commit> -- tests/`, then commit and push.
 

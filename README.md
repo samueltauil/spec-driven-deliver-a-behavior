@@ -11,7 +11,7 @@ _Go from an approved change to failing tests, working code, a pull request with 
 - **What you'll build**: A working dependent claim privacy rule, delivered through a pull request and archived into the living spec.
 - **Prerequisites**:
   - Exercises 1 and 2 of this workshop are recommended. You should be comfortable with branches, commits and pull requests. If they are new to you, start with [Introduction to GitHub](https://github.com/skills/introduction-to-github).
-  - Access to [GitHub Codespaces](https://docs.github.com/en/codespaces/overview). Personal accounts include monthly free usage.
+  - Access to [GitHub Codespaces](https://docs.github.com/en/codespaces/overview). Personal accounts include monthly free usage. If you can't use Codespaces, work in VS Code on your computer instead: see the workshop's [local setup guide](https://github.com/samueltauil/spec-driven-delivery-workshop/blob/main/local-setup.md).
   - [GitHub Copilot](https://github.com/features/copilot) with Copilot Chat in Agent mode. Copilot Free works, but its monthly allowance is limited, and the full workshop uses many prompts.
 - **How long**: This exercise takes less than 80 minutes to complete.
 

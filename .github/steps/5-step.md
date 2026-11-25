@@ -12,7 +12,7 @@ Merging a pull request puts its changes on `main`, the branch everyone builds fr
 
 1. In your browser, open your pull request from `implement-dependent-privacy`. Your archive commit started the **CI / Tests and spec validation** check again. Wait until it shows a green check mark. Mona's own checks appear in the same list.
 
-   > ❕ **Important:** If **CI** fails, don't merge. Select **Details**, fix the first error in your codespace, then commit and push, and wait for a green check.
+   > ❕ **Important:** If **CI** fails, don't merge. Select **Details**, fix the first error in your editor, then commit and push, and wait for a green check.
 
 1. Open the **Files changed** tab and review it as the last human gate. Expect your plan, your tests, `src/claim-visibility.js`, the ticked tasks and the move of the change into the living spec and the archive. Nothing in `features/` should appear.
 

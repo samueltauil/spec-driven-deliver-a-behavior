@@ -135,7 +135,7 @@ jobs:
                 passed: ${{ steps.check-pr-limits.outcome == 'success' }}
               - description: "The CI workflow passed for the latest commit of the pull request"
                 passed: ${{ steps.check-ci.outcome == 'success' }}
-            tips: ${{ contains(steps.*.outcome, 'failure') && '["Edit the pull request description to add the missing scenario IDs and a What the evidence does not prove section. Mona checks again on every edit.", "If CI failed, select Details next to the CI check on the pull request, fix the first error in your codespace, then commit and push.", "Do not merge the pull request yet."]' || '[]' }}
+            tips: ${{ contains(steps.*.outcome, 'failure') && '["Edit the pull request description to add the missing scenario IDs and a What the evidence does not prove section. Mona checks again on every edit.", "If CI failed, select Details next to the CI check on the pull request, fix the first error in your editor, then commit and push.", "Do not merge the pull request yet."]' || '[]' }}
 
       # END: Check practical exercise
 

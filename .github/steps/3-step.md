@@ -1,6 +1,6 @@
 ## Step 3: Open a pull request with evidence and pass CI
 
-Your code is green in your codespace, @{{ login }}. :green_circle: But "it passes on my machine" is not evidence a reviewer can rely on. What does a reviewer need to trust this change? A pull request that traces every scenario ID to evidence, says what that evidence does not prove, and passes the same checks on a clean machine.
+Your code is green in your terminal, @{{ login }}. :green_circle: But "it passes on my machine" is not evidence a reviewer can rely on. What does a reviewer need to trust this change? A pull request that traces every scenario ID to evidence, says what that evidence does not prove, and passes the same checks on a clean machine.
 
 ### 📖 Theory: CI checks every change
 
@@ -10,7 +10,7 @@ Your code is green in your codespace, @{{ login }}. :green_circle: But "it passe
 
 ### ⌨️ Activity 1: Collect your evidence
 
-1. In your codespace terminal, run every check that CI will run.
+1. In your terminal, run every check that CI will run.
 
    > ![Terminal command](https://img.shields.io/badge/Terminal-text?style=flat&logo=gnometerminal&labelColor=1f2328&color=eee)
    >
@@ -47,7 +47,7 @@ Your code is green in your codespace, @{{ login }}. :green_circle: But "it passe
 
 1. Create the pull request, but **don't merge it yet**. You'll add one more commit in the next step.
 
-1. On the pull request's **Conversation** tab, scroll to the checks near the bottom. Wait for the **CI / Tests and spec validation** check to finish with a green check mark. Mona's own checks appear in the same list. If it fails, select **Details**, read the first error, fix it in your codespace, then commit and push.
+1. On the pull request's **Conversation** tab, scroll to the checks near the bottom. Wait for the **CI / Tests and spec validation** check to finish with a green check mark. Mona's own checks appear in the same list. If it fails, select **Details**, read the first error, fix it in your editor, then commit and push.
 
 1. Go back to the exercise issue. Wait a moment for Mona to check your work, provide feedback, and share the next lesson.
 
@@ -78,7 +78,7 @@ Your code is green in your codespace, @{{ login }}. :green_circle: But "it passe
   - That any screen or message shows the result correctly.
   ```
 
-- **Mona says CI did not pass:** On the pull request, select **Details** next to the **CI** check to read the log. Fix the first failure in your codespace, then commit and push. Mona checks again on every push.
+- **Mona says CI did not pass:** On the pull request, select **Details** next to the **CI** check to read the log. Fix the first failure in your editor, then commit and push. Mona checks again on every push.
 
 - **CI is green, but Mona's CI row is ❌:** Mona waits up to 5 minutes for CI. Edit the pull request description, make any small change, and select **Update comment**. Mona checks again and finds the finished run.
 
